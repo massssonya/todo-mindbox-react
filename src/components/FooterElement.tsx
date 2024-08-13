@@ -1,26 +1,39 @@
 import {
-  selectAllTodos,
-  selectActiveTodos,
-  selectCompletedTodos,
-  selectNumberActiveTodos,
+	removeCompletedTodos,
+	selectNumberActiveTodos,
+	setSelector
 } from "../redux/slices/todosSlice";
-import { useAppSelector } from "../redux/hooks";
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
 
 export const FooterElement = () => {
-  const counterActiveTodos = useAppSelector(selectNumberActiveTodos);
-  const handleAllTodos = useAppSelector(selectAllTodos);
-  const handleActiveTodos = useAppSelector(selectActiveTodos);
-  const handleCompletedTodos = useAppSelector(selectCompletedTodos);
-
-  return (
-    <footer className="flex flex-row items-center justify-between text-base">
-      <span>{counterActiveTodos} items left</span>
-      <div className="flex flex-row gap-2 items-center justify-between">
-        <button id="all" onClick={() => handleAllTodos}>All</button>
-        <button id="active" onClick={() => handleActiveTodos}>Active</button>
-        <button id="completed" onClick={() => handleCompletedTodos}>Completed</button>
-      </div>
-      <button>Clear Completes</button>
-    </footer>
-  );
+	const numberActiveTodos = useAppSelector(selectNumberActiveTodos);
+	const dispatch = useAppDispatch();
+	return (
+		<footer className="flex flex-row items-center justify-between text-base">
+			<span>{numberActiveTodos} items left</span>
+			<div className="flex flex-row gap-2 items-center justify-between">
+				<button
+					id="all"
+					onClick={() => dispatch(setSelector("selectAllTodos"))}
+				>
+					All
+				</button>
+				<button
+					id="active"
+					onClick={() => dispatch(setSelector("selectActiveTodos"))}
+				>
+					Active
+				</button>
+				<button
+					id="completed"
+					onClick={() => dispatch(setSelector("selectCompletedTodos"))}
+				>
+					Completed
+				</button>
+			</div>
+			<button onClick={() => dispatch(removeCompletedTodos())}>
+				Clear Completes
+			</button>
+		</footer>
+	);
 };
