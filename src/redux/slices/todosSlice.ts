@@ -1,18 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
-interface ITodo {
+export interface ITodo {
 	id: string;
 	value: string;
 	isCompleted: boolean;
 }
 
-interface IState {
-	todos: ITodo[];
+export interface IState {
+	todos: Array<ITodo>;
 	selector: string;
 }
 
-export const initialState: IState  = {
+export const initialState: IState = {
 	todos: [
 		{
 			id: "todo1",

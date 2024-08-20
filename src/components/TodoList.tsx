@@ -9,6 +9,12 @@ import {
 } from "../redux/slices/todosSlice";
 import { useAppSelector } from "../redux/hooks";
 
+const selectorsDict: { [key: string]: string } = {
+	selectAllTodos: "",
+	selectActiveTodos: "Active",
+	selectCompletedTodos: "Completed"
+};
+
 export const TodoList = () => {
 	const selector = useAppSelector(selectSelector);
 	const todos = useAppSelector((state) => {
@@ -25,8 +31,13 @@ export const TodoList = () => {
 	});
 
 	return (
-		<div className="h-[250px] overflow-y-scroll">
-			{todos.map((todo: ITodo) => (
+		<div className="relative flex flex-col w-full h-[250px] overflow-y-scroll">
+			{todos?.length === 0 && (
+				<p className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-2xl text-center">
+					No {selectorsDict[selector]} todos
+				</p>
+			)}
+			{todos?.map((todo: ITodo) => (
 				<Fragment key={todo.id}>
 					<TodoElement todo={todo} />
 				</Fragment>

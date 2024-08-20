@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TodoList should render todos 1`] = `
+<div>
+  <div
+    class="relative flex flex-col w-full h-[250px] overflow-y-scroll"
+  >
+    <div
+      class="w-full py-4 pl-2 flex items-center border "
+    >
+      <input
+        class="scale-[1.5] ml-1"
+        type="checkbox"
+      />
+      <label
+        class="ml-4 p-2"
+      >
+        test
+      </label>
+    </div>
+    <div
+      class="w-full py-4 pl-2 flex items-center border text-gray-400 line-through"
+    >
+      <input
+        checked=""
+        class="scale-[1.5] ml-1"
+        type="checkbox"
+      />
+      <label
+        class="ml-4 p-2"
+      >
+        test2
+      </label>
+    </div>
+  </div>
+</div>
+`;

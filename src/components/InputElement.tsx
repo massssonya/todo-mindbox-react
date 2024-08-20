@@ -23,6 +23,7 @@ export const InputElement = () => {
 				value={value}
 				onChange={(e) => setValue(e.target.value)}
 				onKeyUp={handleKeyPress}
+
 			/>
 		</div>
 	);

@@ -9,7 +9,7 @@ export const FooterElement = () => {
 	const numberActiveTodos = useAppSelector(selectNumberActiveTodos);
 	const dispatch = useAppDispatch();
 	return (
-		<footer className="flex flex-row items-center justify-between text-base">
+		<footer className="px-4 py-2 flex flex-row items-center justify-between text-base border">
 			<span>{numberActiveTodos} items left</span>
 			<div className="flex flex-row gap-2 items-center justify-between">
 				<button
